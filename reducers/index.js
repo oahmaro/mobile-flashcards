@@ -20,7 +20,7 @@ function decksStorage (state = {}, action) {
                 ...state,
                 [action.title]: {
                     action.title,
-                    questions: [...state[action.title].questions, action.card]
+                    questions: state[action.title].questions.push(action.card)
                 }
             }
         default:
