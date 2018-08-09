@@ -11,7 +11,7 @@ function decksStorage (state = {}, action) {
             return {
                 ...state,
                 [action.title]: {
-                    action.title,
+                    [action.title]: action.title,
                     questions: []
                 }
             }
@@ -19,7 +19,7 @@ function decksStorage (state = {}, action) {
             return {
                 ...state,
                 [action.title]: {
-                    action.title,
+                    [action.title]: action.title,
                     questions: state[action.title].questions.push(action.card)
                 }
             }
