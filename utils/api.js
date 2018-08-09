@@ -3,7 +3,6 @@ import { DECK_STORAGE_KEY, setDummyData } from './helpers'
 
 export function getDecks () {
     return AsyncStorage.getItem(DECK_STORAGE_KEY)
-        .then( results => results === null ? setDummyData : JSON.parse(results))
 }
 
 export function getDeck (id) {
