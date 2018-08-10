@@ -27,7 +27,7 @@ export function handleReceiveDecks() {
 
 export function handleCreateDeck(title) {
     return (dispatch) => {
-        saveDeckTitle(title).then(data => {
+        saveDeckTitle(title).then(() => {
             dispatch(createDeck(title))
         })
     }

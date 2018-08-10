@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import DeckList from './components/DeckList'
+import NewDeck from './components/NewDeck'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
@@ -25,7 +26,7 @@ const Tabs = createMaterialTopTabNavigator({
     }
   },
   NewDeck: {
-    screen: DeckList,
+    screen: NewDeck,
     navigationOptions: {
       tabBarLabel: 'NEW DECK '
     }
