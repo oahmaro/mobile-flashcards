@@ -1,12 +1,11 @@
 import { GET_DECKS } from './actionTypes'
 import { CREATE_DECK } from './actionTypes'
 import { getDecks, saveDeckTitle } from '../utils/api'
-import { setDummyData } from '../utils/helpers';
 
 export function receiveDecks(decks) {
     return {
         type: GET_DECKS,
-        ...decks
+        decks
     }
 }
 
@@ -17,18 +16,14 @@ export function createDeck(title) {
     }
 }
 
-export function handleReceiveDecks() {
-    return (dispatch) => {
-        getDecks().then(data => {
-            dispatch(receiveDecks(data))
-        })
-    }
-}
+export const handleReceiveDecks = () => dispatch => (
+    getDecks().then(data => {
+        dispatch(receiveDecks(data))
+    })
+)
 
-export function handleCreateDeck(title) {
-    return (dispatch) => {
-        saveDeckTitle(title).then(() => {
-            dispatch(createDeck(title))
-        })
-    }
-}
+export const handleCreateDeck = ({title}) => dispatch => (
+    saveDeckTitle(title).then(() => {
+        dispatch(createDeck(title))
+    })
+)

@@ -1,17 +1,19 @@
 import { GET_DECKS, CREATE_DECK, ADD_CARD_TO_DECK } from '../actions/actionTypes'
 
-function decksStorage (state = {}, action) {
+export default function reducer (state = {}, action) {
     switch (action.type) {
         case GET_DECKS:
-            return {
-                ...state,
-                ...action.decks
-            }
+            if(action.decks) {
+                return {
+                    ...state,
+                    ...JSON.parse(action.decks)
+                }
+            } else return {}
         case CREATE_DECK:
             return {
                 ...state,
                 [action.title]: {
-                    [action.title]: action.title,
+                    title: action.title,
                     questions: []
                 }
             }
@@ -19,13 +21,11 @@ function decksStorage (state = {}, action) {
             return {
                 ...state,
                 [action.title]: {
-                    [action.title]: action.title,
-                    questions: state[action.title].questions.push(action.card)
+                    title : action.title,
+                    questions: [...state[action.title].questions, action.card]
                 }
             }
         default:
             return state
     }
 }
-
-export default decksStorage

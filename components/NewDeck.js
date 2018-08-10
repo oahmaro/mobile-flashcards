@@ -15,12 +15,16 @@ class NewDeck extends Component {
     }
 
     submitDeck = () => {
-        const title = this.state.input
-        handleCreateDeck(title)
+        // check error when user submit empty text
+        const { input } = this.state
+        
+        this.props.createDeck(input).then(() => {
+            console.log('New State', input)
+        })
+
         this.setState(() => ({
             input: ''
         }))
-        console.log('New State: ', this.props.state)
     }
 
     render () {
@@ -39,9 +43,12 @@ class NewDeck extends Component {
     }
 }
 
-function mapStateToProps (state) {
-    return {
-        state
-    }
-}
-export default connect (mapStateToProps)(NewDeck)
+const mapStateToProps = state => ({
+    state,
+})
+
+const mapDispatchToProps = dispatch => ({
+    createDeck: (title) => dispatch(handleCreateDeck(title))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewDeck)

@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
 import reducer from './reducers'
-import middleware from './middleware'
 import { createMaterialTopTabNavigator } from 'react-navigation'
 import { white, blue } from './utils/colors'
 import { Constants } from 'expo'
+import { setStorage } from './utils/helpers'
 
 function FlashCardStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -48,10 +49,15 @@ const Tabs = createMaterialTopTabNavigator({
   }
 })
 
+const store = createStore(reducer, applyMiddleware(thunk))
+
 export default class App extends React.Component {
+  componentDidMount() {
+    setStorage()
+  }
   render() {
     return (
-      <Provider store={createStore(reducer, middleware)}>
+      <Provider store={store}>
         <View style={{flex: 1}}>
           <FlashCardStatusBar  backgroundColor={blue}/>
           <Tabs />
