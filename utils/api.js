@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-import { DECK_STORAGE_KEY, setDummyData } from './helpers'
+import { DECK_STORAGE_KEY } from './helpers'
 
 export function getDecks () {
     return AsyncStorage.getItem(DECK_STORAGE_KEY)

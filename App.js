@@ -9,7 +9,6 @@ import { createMaterialTopTabNavigator } from 'react-navigation'
 import { white, blue } from './utils/colors'
 import { Constants } from 'expo'
 
-
 function FlashCardStatusBar ({ backgroundColor, ...props }) {
   return (
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
