@@ -1,20 +1,22 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 
 class Deck extends Component {
     render() {
         return(
-            <View style={styles.box}>
-                <View style={styles.container}>
-                    <Text style={styles.title}>
-                        {this.props.title}
-                    </Text>
-                    <Text style={styles.subTitle}>
-                        {this.props.questions.length} cards
-                    </Text>
-                </View>
-
-            </View>
+            <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate(
+                'DeckDetail',
+                { title: this.props.title}
+            )}>
+                    <View style={styles.container}>
+                        <Text style={styles.title}>
+                            {this.props.title}
+                        </Text>
+                        <Text style={styles.subTitle}>
+                            {this.props.questions.length} cards
+                        </Text>
+                    </View>
+            </TouchableOpacity>
         )
     }
 }

@@ -10,7 +10,11 @@ class DeckList extends Component {
     }
 
     renderItem = ({ item }) => {
-        return <Deck title={item.title} questions={item.questions}/>
+        return <Deck 
+                    title={item.title} 
+                    questions={item.questions}
+                    navigation={this.props.navigation}
+                    />
     }
 
     render () {
