@@ -4,9 +4,14 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 class Deck extends Component {
     render() {
         return(
-            <TouchableOpacity style={styles.box} onPress={() => this.props.navigation.navigate(
+            <TouchableOpacity 
+                style={styles.box} 
+                onPress={() => this.props.navigation.navigate(
                 'DeckDetail',
-                { title: this.props.title}
+                {
+                    title: this.props.title,
+                    questions: this.props.questions
+                }
             )}>
                     <View style={styles.container}>
                         <Text style={styles.title}>

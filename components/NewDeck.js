@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     input: {
         margin: 30,
         padding: 10,
-
     },
     button: {
         backgroundColor: blue,
