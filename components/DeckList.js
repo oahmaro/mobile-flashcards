@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList } from 'react-native'
+import { View, Text, FlatList, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { handleReceiveDecks } from '../actions/deck'
 import Deck from './Deck'
@@ -19,8 +19,10 @@ class DeckList extends Component {
         return(
             Object.keys(data).length === 0 
             ? <Text>Loading...</Text> 
-            : <View>
-                <FlatList 
+            : <View style={styles.container}>
+                <FlatList
+                    style={styles.flatList}
+                    numColumns='2'  
                     data={data}
                     renderItem={this.renderItem}
                     keyExtractor={(item) => item.title}
@@ -39,3 +41,12 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeckList)
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#eaeaea',
+    },
+    flatList: {
+        margin: 10,
+    }
+})

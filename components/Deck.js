@@ -4,9 +4,16 @@ import { Text, View, StyleSheet } from 'react-native'
 class Deck extends Component {
     render() {
         return(
-            <View style={styles.container}>
-                <Text style={styles.title}>{this.props.title}</Text>
-                <Text style={styles.subTitle}>{this.props.questions.length} cards</Text>
+            <View style={styles.box}>
+                <View style={styles.container}>
+                    <Text style={styles.title}>
+                        {this.props.title}
+                    </Text>
+                    <Text style={styles.subTitle}>
+                        {this.props.questions.length} cards
+                    </Text>
+                </View>
+
             </View>
         )
     }
@@ -15,13 +22,29 @@ class Deck extends Component {
 export default Deck
 
 const styles = StyleSheet.create({
+    box: {
+        flex: 1,
+        height: 200,
+        backgroundColor: '#ffffff',
+        borderRadius: 5,
+        margin: 10,
+        shadowOffset: { width: 10, height: 10 },
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        elevation: 6,
+    },
     container: {
-        flex: 1
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     title: {
-        fontSize: 30,
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#455356',
     },
     subTitle: {
-        fontSize: 15,
+        fontSize: 14,
+        color: '#838c8e',
     }
 })
