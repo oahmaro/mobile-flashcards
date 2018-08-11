@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     box: {
         flex: 1,
         height: 200,
+        maxWidth: '45%',
         backgroundColor: '#ffffff',
         borderRadius: 5,
         margin: 10,
