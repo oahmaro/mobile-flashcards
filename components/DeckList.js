@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import { handleReceiveDecks } from '../actions/deck'
+import Deck from './Deck'
 
 class DeckList extends Component {
     componentDidMount() {
@@ -9,19 +10,22 @@ class DeckList extends Component {
     }
 
     renderItem = ({ item }) => {
-        return <Deck title={item.title} questions={DataTransferItemList.questions}/>
+        return <Deck title={item.title} questions={item.questions}/>
     }
 
     render () {
-        const data = this.props.decks
-        console.log('State: ', this.props.decks)
+        const data = Object.values(this.props.decks)
+        console.log('Important', data)
         return(
-            <View>
+            Object.keys(data).length === 0 
+            ? <Text>Loading...</Text> 
+            : <View>
                 <FlatList 
-                    data={}
+                    data={data}
                     renderItem={this.renderItem}
+                    keyExtractor={(item) => item.title}
                 />
-            </View>
+             </View>
         )
     }
 }

@@ -22,7 +22,7 @@ export const handleReceiveDecks = () => dispatch => (
     })
 )
 
-export const handleCreateDeck = ({title}) => dispatch => (
+export const handleCreateDeck = (title) => dispatch => (
     saveDeckTitle(title).then(() => {
         dispatch(createDeck(title))
     })

@@ -19,7 +19,7 @@ class NewDeck extends Component {
         const { input } = this.state
         
         this.props.createDeck(input).then(() => {
-            console.log('New State', input)
+            console.log('New State', this.props.state)
         })
 
         this.setState(() => ({
