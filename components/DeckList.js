@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import { handleReceiveDecks } from '../actions/deck'
 
@@ -8,11 +8,19 @@ class DeckList extends Component {
         this.props.receiveDecks()
     }
 
+    renderItem = ({ item }) => {
+        return <Deck title={item.title} questions={DataTransferItemList.questions}/>
+    }
+
     render () {
+        const data = this.props.decks
         console.log('State: ', this.props.decks)
         return(
             <View>
-                <Text>DeckList</Text>
+                <FlatList 
+                    data={}
+                    renderItem={this.renderItem}
+                />
             </View>
         )
     }
