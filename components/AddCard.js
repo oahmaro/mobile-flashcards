@@ -3,7 +3,8 @@ import { TextInput, View, Text, TouchableOpacity, StyleSheet } from 'react-nativ
 
 class AddCard extends Component {
     state = {
-        input: '',
+        question: '',
+        answer: '',
     }
 
     render() {

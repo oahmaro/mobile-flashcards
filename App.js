@@ -3,6 +3,7 @@ import { View, StatusBar } from 'react-native';
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
+import AddCard from './components/AddCard'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
@@ -11,6 +12,7 @@ import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navig
 import { white, blue } from './utils/colors'
 import { Constants } from 'expo'
 import { setStorage } from './utils/helpers'
+
 
 function FlashCardStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -59,6 +61,9 @@ const MainNavigator = createStackNavigator({
   },
   DeckDetail: {
     screen: DeckDetail,
+  },
+  AddCard: {
+    screen: AddCard,
   }
 })
 
