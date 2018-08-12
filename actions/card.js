@@ -11,7 +11,7 @@ export function createCard (title, card) {
 
 export function handleCreateCard(title, card) {
     return (dispatch) => {
-        addCardToDeck(title, card).then(data => {
+        return addCardToDeck(title, card).then(() => {
             dispatch(createCard(title, card))
         })
     }

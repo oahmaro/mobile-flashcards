@@ -61,9 +61,22 @@ const MainNavigator = createStackNavigator({
   },
   DeckDetail: {
     screen: DeckDetail,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: blue,
+      }
+    }
   },
   AddCard: {
     screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: blue,
+      }
+    }
   }
 })
 
