@@ -3,6 +3,7 @@ import { View, StatusBar } from 'react-native';
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
+import Quiz from './components/Quiz'
 import AddCard from './components/AddCard'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -72,6 +73,16 @@ const MainNavigator = createStackNavigator({
     screen: AddCard,
     navigationOptions: {
       title: 'Add Card',
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: blue,
+      }
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz',
       headerTintColor: 'white',
       headerStyle: {
         backgroundColor: blue,
