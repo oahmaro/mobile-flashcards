@@ -11,7 +11,7 @@ class DeckDetail extends Component {
     }
 
     render() {
-        const { title, questions } = this.props.navigation.state.params
+        const { title, questions } = this.props.deck
         return (
             <View style={styles.container}>
                 <View style={styles.Box}>
@@ -41,9 +41,6 @@ const mapStateToProps = (state, { navigation }) => {
 export default connect(mapStateToProps, null)(DeckDetail)
 
 const styles = StyleSheet.create({
-    container: {
-        
-    },
     Box: {
         borderRadius: 5,
         height: 400,
