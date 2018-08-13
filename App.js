@@ -13,6 +13,7 @@ import { createMaterialTopTabNavigator, createStackNavigator } from 'react-navig
 import { white, blue } from './utils/colors'
 import { Constants } from 'expo'
 import { setStorage } from './utils/helpers'
+import { setLocalNotification } from './utils/helpers'
 
 
 function FlashCardStatusBar ({ backgroundColor, ...props }) {
@@ -96,6 +97,7 @@ const store = createStore(reducer, applyMiddleware(thunk))
 export default class App extends React.Component {
   componentDidMount() {
     console.log('App component mounted')
+    setLocalNotification()
     // setStorage()
   }
   render() {

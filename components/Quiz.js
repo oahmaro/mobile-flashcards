@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
 import { green, red, blue } from '../utils/colors' 
 import { withNavigation } from 'react-navigation'
 
+
 class Quiz extends Component {
     state = {
         isFlipped: false,
