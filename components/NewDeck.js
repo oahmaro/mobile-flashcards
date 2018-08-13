@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'reac
 import { handleCreateDeck } from '../actions/deck'
 import { connect } from 'react-redux'
 import { blue } from '../utils/colors'
-import { withNavigation } from 'react-navigation'
 
 class NewDeck extends Component {
     state = {
@@ -26,14 +25,16 @@ class NewDeck extends Component {
                 {cancelable: false}
             )
         } else {
-            const { goBack } = this.props.navigation
+            const { navigate } = this.props.navigation
             this.props.createDeck(input).then(() => {
-                goBack()
+                navigate(
+                    'DeckDetail',
+                    {
+                        title: this.state.input,
+                        questions: []
+                    }
+                )
             })
-    
-            this.setState(() => ({
-                input: ''
-            }))
         }
     }
 
@@ -62,7 +63,7 @@ const mapDispatchToProps = dispatch => ({
     createDeck: (title) => dispatch(handleCreateDeck(title))
 })
 
-export default withNavigation(connect(mapStateToProps, mapDispatchToProps)(NewDeck))
+export default connect(mapStateToProps, mapDispatchToProps)(NewDeck)
 
 const styles = StyleSheet.create({
     container: {
