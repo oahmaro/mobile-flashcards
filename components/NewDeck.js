@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { handleCreateDeck } from '../actions/deck'
 import { connect } from 'react-redux'
 import { blue } from '../utils/colors'
+import { withNavigation } from 'react-navigation'
 
 class NewDeck extends Component {
     state = {
@@ -16,16 +17,24 @@ class NewDeck extends Component {
     }
 
     submitDeck = () => {
-        // check error when user submit empty text
         const { input } = this.state
-        
-        this.props.createDeck(input).then(() => {
-            console.log('New State', this.props.state)
-        })
-
-        this.setState(() => ({
-            input: ''
-        }))
+        if (input === '') {
+            Alert.alert(
+                "Empty Title",
+                "Add title to your deck!",
+                [{text: "OK", onPress:() => {}}],
+                {cancelable: false}
+            )
+        } else {
+            const { goBack } = this.props.navigation
+            this.props.createDeck(input).then(() => {
+                goBack()
+            })
+    
+            this.setState(() => ({
+                input: ''
+            }))
+        }
     }
 
     render () {
@@ -53,7 +62,7 @@ const mapDispatchToProps = dispatch => ({
     createDeck: (title) => dispatch(handleCreateDeck(title))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewDeck)
+export default withNavigation(connect(mapStateToProps, mapDispatchToProps)(NewDeck))
 
 const styles = StyleSheet.create({
     container: {

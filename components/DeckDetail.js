@@ -61,7 +61,11 @@ const styles = StyleSheet.create({
         marginTop: 30,
         marginBottom: 75,
         marginHorizontal: 30,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        shadowOffset: { width: 10, height: 10 },
+        shadowColor: 'black',
+        shadowOpacity: 1,
+        elevation: 6,
     },
     title: {
         fontSize: 22,
