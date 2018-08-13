@@ -4,28 +4,78 @@ import { green, red, blue } from '../utils/colors'
 
 class Quiz extends Component {
     state = {
+        isFlipped: false,
+        questions: null, 
+        correctGuesses: 0,
+        wrongGuesses: 0,
+        index: 0,
+        finished: false,
+    }
 
+    componentDidMount() {
+        const { questions } = this.props.navigation.state.params
+        this.setState(() => ({
+            questions
+        }))
+    }
+
+    onCorrect = () => {
+        if (!this.state.finished) {
+            this.setState((prevState) => {
+                const { questions, correctGuesses, index, finished } = prevState
+                return {
+                    correctGuesses: correctGuesses + 1 ,
+                    index: index === (questions.length - 1) ? questions.length - 1 : index + 1,
+                    finished: index === (questions.length - 1) && !finished 
+                }
+            })
+        }
+    }
+
+    onIncorrect = () => {
+        if (!this.state.finished) {
+            this.setState((prevState) => {
+                const { questions, incorrectGuesses, index, finished } = prevState
+                return {
+                    incorrectGuesses: incorrectGuesses + 1 ,
+                    index: index === (questions.length - 1) ? questions.length - 1 : index + 1,
+                    finished: index === (questions.length - 1) && !finished 
+                }
+            })
+        }
+    }
+
+    handleFilp = () => {
+        this.setState((prevState) => ({
+            isFlipped: !prevState.isFlipped
+        }))
     }
 
     render() {
-        const { questions } = this.props.navigation.state.params
+        const { isFlipped, questions, correctAnswers, wrongAnswers, index, finished } = this.state
+        
         return(
             <View style={styles.container}>
-                <Text style={styles.counterText}>1 / {questions.length}</Text>
-                <View style={styles.groupA}>
-                    <Text style={styles.questionText}>Here is the question, What do you really think of it?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.flipText}>Answer</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.groupB}>
-                    <TouchableOpacity style={[styles.button, styles.correctButton]}>
-                        <Text style={styles.buttonText}>Correct</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.button, styles.incorrectButton]}>
-                        <Text style={styles.buttonText}>Incorrect</Text>
-                    </TouchableOpacity>
-                </View>
+                {
+                    (questions && !finished)
+                        && ( <View style={styles.container}>
+                                <Text style={styles.counterText}>{index + 1} / {questions.length}</Text>
+                                <View style={styles.groupA}>
+                                    <Text style={styles.questionText}>{isFlipped ? questions[index].answer : questions[index].question}</Text>
+                                    <TouchableOpacity onPress={this.handleFilp}>
+                                        <Text style={styles.flipText}>{isFlipped ? 'Question': 'Answer'}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={styles.groupB}>
+                                    <TouchableOpacity style={[styles.button, styles.correctButton]} onPress={this.onCorrect}>
+                                        <Text style={styles.buttonText}>Correct</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={[styles.button, styles.incorrectButton]} onPress={this.onIncorrect}>
+                                        <Text style={styles.buttonText}>Incorrect</Text>
+                                    </TouchableOpacity>
+                                </View>
+                        </View>)
+                }
             </View>
         )
     }

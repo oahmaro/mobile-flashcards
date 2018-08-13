@@ -22,7 +22,6 @@ class AddCard extends Component {
     }
 
     handleSubmitCard = () => {
-        console.log('Walla Pressed')
         const { question, answer } = this.state
         const card = {question, answer}
         const title = this.props.navigation.state.params.title

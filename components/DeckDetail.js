@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 import { connect } from 'react-redux';
 import { blue} from '../utils/colors'
 
@@ -10,6 +10,18 @@ class DeckDetail extends Component {
         }
     }
 
+    handleStartQuiz = () => {
+        const { questions } = this.props.deck
+        if(this.props.deck.questions.length !== 0) {
+            this.props.navigation.navigate('Quiz', {questions})
+        } else Alert.alert(
+            "Empty Deck",
+            "Add some cards to start your quiz!",
+            [{text: "OK", onPress:() => {}}],
+            {cancelable: false}
+        )
+    }
+    
     render() {
         const { title, questions } = this.props.deck
         return (
@@ -24,12 +36,7 @@ class DeckDetail extends Component {
                     )}>
                     <Text style={styles.buttonText}>Add Card</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate(
-                    'Quiz',
-                    {
-                        questions
-                    }
-                    )}>
+                <TouchableOpacity style={styles.button} onPress={this.handleStartQuiz}>
                     <Text style={styles.buttonText}>Start Quiz</Text>
                 </TouchableOpacity>
             </View>

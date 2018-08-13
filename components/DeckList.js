@@ -19,7 +19,7 @@ class DeckList extends Component {
 
     render () {
         const data = Object.values(this.props.decks)
-        console.log('Important', data)
+        // console.log('Important', data)
         return(
             Object.keys(data).length === 0 
             ? <Text>Loading...</Text> 
