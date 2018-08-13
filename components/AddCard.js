@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextInput, View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { TextInput, View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { blue } from '../utils/colors'
 import { connect } from 'react-redux'
 import { handleCreateCard } from '../actions/card'
@@ -25,14 +25,23 @@ class AddCard extends Component {
         const { question, answer } = this.state
         const card = {question, answer}
         const title = this.props.navigation.state.params.title
-        
-        this.props.createCard(title, card)
 
-        // set values back to empty
-        this.setState(() => ({
-            question: '',
-            answer: ''
-        }))
+        if (question === '' && answer === '') {
+            Alert.alert(
+                "Empty Fields",
+                "You need to fill both fields!",
+                [{text: "OK", onPress:() => {}}],
+                {cancelable: false}
+            )
+        } else {
+            this.props.createCard(title, card)
+
+            // set values back to empty
+            this.setState(() => ({
+                question: '',
+                answer: ''
+            }))
+        }
     }
 
     render() {
