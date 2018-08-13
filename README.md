@@ -1,68 +1,28 @@
 # Flash Cards
-
-One Paragraph of project description goes here
+  this app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks, 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+This application was built and tested on Android, These instructions will get you a copy of the project up and running on your local machine.
 
 ### Prerequisites
 
-You will need to have node.js installed 
-
-```
-Give examples
-```
+You will need to have
+1. Node
+2. Android Studio
+3. create-react-native-app
 
 ### Installing
 
-* Clone the project
-```bash
-git clone https://github.com/oahmaro/mobile-flashcards.git
-```
-
-* Change to the project directory  
-```bash
-cd mobile-flashcards
-```
-* Install all project dependencies
-```bash
-npm install
-```
-* Start server with
-```bash
-npm start
-```
-
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+* Clone the project `git clone https://github.com/oahmaro/mobile-flashcards.git`
+* Change to the project directory `cd mobile-flashcards`
+* Install all project dependencies `npm install`
+* Start server with `npm start`
 
 ## Built With
-* [create-react-native-app](https://github.com/react-community/create-react-native-app)
+
+* [Create React Native App](https://github.com/react-community/create-react-native-app)
+* [Expo](https://github.com/expo/expo)
 
 
 
