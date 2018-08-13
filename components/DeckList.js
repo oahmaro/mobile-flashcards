@@ -22,7 +22,9 @@ class DeckList extends Component {
         // console.log('Important', data)
         return(
             Object.keys(data).length === 0 
-            ? <Text>Loading...</Text> 
+            ? <View style={styles.container}>
+                <Text style={styles.emptyDeckWarning}>Your list is empty, Create new deck!</Text> 
+            </View>
             : <View style={styles.container}>
                 <FlatList
                     style={styles.flatList}
@@ -52,5 +54,10 @@ const styles = StyleSheet.create({
     },
     flatList: {
         margin: 10,
+    },
+    emptyDeckWarning: {
+        fontSize: 22,
+        padding: 10,
+        color: '#455356',
     }
 })
